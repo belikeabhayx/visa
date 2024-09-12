@@ -28,7 +28,7 @@ export default function Navbar() {
   )
 
   return (
-    <nav className="bg-[#3423A6]">
+    <nav className="bg-[#3423A6] text-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
@@ -40,7 +40,7 @@ export default function Navbar() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-4">
             <NavItems />
-            <Button>Get Started</Button>
+            <Button className='bg-white text-black' size={'lg'}>Get Started</Button>
           </div>
 
           {/* Mobile Navigation */}

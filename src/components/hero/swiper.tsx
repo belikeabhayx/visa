@@ -5,7 +5,7 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 import { Pagination, Navigation } from 'swiper/modules'
-import { Card } from '../cards/card'
+import Card from '../cards/card'
 
 interface MediaItem {
   url: string
@@ -16,6 +16,45 @@ export default function HeroSwiper() {
   const [mediaItems, setMediaItems] = useState<MediaItem[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+
+  const countries = [
+    {
+      country: 'Canada',
+      flagUrl: '/flags/canada.jpg',
+      visaOptions: [
+        'Canada Express Entry',
+        '67 Points Calculator',
+        'CRS Calculator',
+        'Business Investor Visa',
+        'Provincial Nominee Program',
+        'Family Immigration',
+      ],
+    },
+    {
+      country: 'Australia',
+      flagUrl: '/flags/aus.jpg',
+      visaOptions: [
+        'Australia Skilled Occupation List',
+        'Employer Nomination Visa',
+        'Australia 65 Points Calculator',
+        'Australia Visa From India',
+        'Skilled Nominated Visa',
+        'Skilled Independent Visa',
+      ],
+    },
+    {
+      country: 'Germany',
+      flagUrl: '/flags/germany.png',
+      visaOptions: [
+        'Visitor Visa',
+        'Student Visa',
+        'Business Visa',
+        'Job Seeker Visa',
+        'Germany Immigration',
+        'Germany Points Calculator',
+      ],
+    },
+  ]
 
   useEffect(() => {
     async function fetchData() {
@@ -65,8 +104,15 @@ export default function HeroSwiper() {
       </Swiper>
 
       {/* Positioning Card slightly over the Swiper */}
-      <div className="absolute bottom-[-330px] left-1/2 transform -translate-x-1/2 z-10">
-        <Card />
+      <div className="absolute bottom-[-330px] left-1/2 transform -translate-x-1/2 z-10 flex gap-x-8">
+        {countries.map((countryData) => (
+          <Card
+            key={countryData.country}
+            country={countryData.country}
+            flagUrl={countryData.flagUrl}
+            visaOptions={countryData.visaOptions}
+          />
+        ))}
       </div>
     </div>
   )

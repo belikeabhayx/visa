@@ -1,5 +1,5 @@
 "use client"
-import { Card} from '@/components/cards/card'
+
 import AboutSection from '@/components/circleabout/circle'
 import { Footer } from '@/components/footer/footer'
 import HeroSwiper from '@/components/hero/swiper'

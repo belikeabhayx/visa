@@ -3,6 +3,9 @@ import axios from 'axios'
 
 const AboutSection = () => {
   const [imageUrl, setImageUrl] = useState('')
+  const [prVisaProgress, setPrVisaProgress] = useState(0)
+  const [clientServiceProgress, setClientServiceProgress] = useState(0)
+  const [transparencyProgress, setTransparencyProgress] = useState(0)
 
   useEffect(() => {
     const fetchImageUrl = async () => {
@@ -22,8 +25,28 @@ const AboutSection = () => {
     fetchImageUrl()
   }, [])
 
+   useEffect(() => {
+     // Function to increment the progress
+     const incrementProgress = (setProgress:any) => {
+       let progress = 0
+       const interval = setInterval(() => {
+         if (progress < 100) {
+           progress += 1
+           setProgress(progress)
+         } else {
+           clearInterval(interval) // Stop when reaching 100
+         }
+       }, 10) // Adjust the speed here
+     }
+
+     // Trigger the progress animation for each bar
+     incrementProgress(setPrVisaProgress)
+     incrementProgress(setClientServiceProgress)
+     incrementProgress(setTransparencyProgress)
+   }, [])
+
   return (
-    <section className="container mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-6 p-12 mt-64 transform scale-90">
+    <section className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-6 p-12 mt-80 transform scale-90">
       {/* Left Side - Circle Image */}
       <div className="w-64 h-64 bg-blue-600 rounded-full flex items-center justify-center overflow-hidden">
         {imageUrl ? (
@@ -57,28 +80,37 @@ const AboutSection = () => {
           {/* PR Visa Success Rate */}
           <div className="flex justify-between items-center">
             <span className="text-sm">PR Visa Success Rate</span>
-            <span className="text-sm font-bold">100%</span>
+            <span className="text-sm font-bold">{prVisaProgress}%</span>
           </div>
           <div className="w-full bg-gray-300 h-2 rounded-full">
-            <div className="bg-red-600 h-2 rounded-full" style={{ width: '100%' }}></div>
+            <div
+              className="bg-red-600 h-2 rounded-full"
+              style={{ width: `${prVisaProgress}%` }}
+            ></div>
           </div>
 
           {/* Client Service Satisfaction */}
           <div className="flex justify-between items-center">
             <span className="text-sm">Client Service Satisfaction</span>
-            <span className="text-sm font-bold">100%</span>
+            <span className="text-sm font-bold">{clientServiceProgress}%</span>
           </div>
           <div className="w-full bg-gray-300 h-2 rounded-full">
-            <div className="bg-red-600 h-2 rounded-full" style={{ width: '100%' }}></div>
+            <div
+              className="bg-red-600 h-2 rounded-full"
+              style={{ width: `${clientServiceProgress}%` }}
+            ></div>
           </div>
 
           {/* Transparency */}
           <div className="flex justify-between items-center">
             <span className="text-sm">Transparency</span>
-            <span className="text-sm font-bold">100%</span>
+            <span className="text-sm font-bold">{transparencyProgress}%</span>
           </div>
           <div className="w-full bg-gray-300 h-2 rounded-full">
-            <div className="bg-red-600 h-2 rounded-full" style={{ width: '100%' }}></div>
+            <div
+              className="bg-red-600 h-2 rounded-full"
+              style={{ width: `${transparencyProgress}%` }}
+            ></div>
           </div>
         </div>
       </div>
