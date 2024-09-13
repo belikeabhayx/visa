@@ -1,29 +1,18 @@
+// src/app/(app)/blogs/page.tsx
+
 import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import payload from 'payload'
 
 interface BlogPost {
   id: number
   title: string
   description: string
-  content: {
-    root: {
-      children: Array<{
-        children: Array<{
-          text: string
-        }>
-      }>
-    }
-  }
   featuredImage: {
     url: string
   } | null
   slug: string | null
   publishedDate: string | null
-  author: string | null
-  updatedAt: string
-  createdAt: string
 }
 
 async function getBlogPosts(): Promise<BlogPost[]> {
@@ -42,7 +31,7 @@ async function getBlogPosts(): Promise<BlogPost[]> {
   }
 }
 
-export default async function HomePage() {
+export default async function BlogsPage() {
   const posts = await getBlogPosts()
 
   if (posts.length === 0) {
@@ -59,7 +48,7 @@ export default async function HomePage() {
       <h1 className="text-3xl font-bold my-8">Latest Blog Posts</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {posts.map((post) => (
-          <Link href={`/blog/${post.slug || post.id}`} key={post.id}>
+          <Link href={`/blogs/${post.slug || post.id}`} key={post.id}>
             <div className="border rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
               {post.featuredImage && (
                 <Image
