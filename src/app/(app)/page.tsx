@@ -6,6 +6,7 @@ import HeroSwiper from '@/components/hero/swiper'
 import NavOne from '@/components/navbar/navone'
 import NavTwo from '@/components/navbar/navtwo'
 import React, { useEffect, useState } from 'react'
+import NewsPage from './news/page'
 
 interface MediaItem {
   id: string
@@ -34,6 +35,7 @@ const MediaComponent = () => {
       <div className=''>
         <AboutSection />
       </div>
+      <NewsPage/>
       {/* {media.map((item) => (
         <img key={item.id} src={item.url} alt={item.alt} />
       ))} */}

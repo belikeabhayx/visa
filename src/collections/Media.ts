@@ -11,6 +11,11 @@ export const Media: CollectionConfig = {
       type: 'text',
       required: true,
     },
+     {
+      name: 'link',
+      type: 'text',
+      label: 'Link URL',
+    },
   ],
   upload: true,
 }
