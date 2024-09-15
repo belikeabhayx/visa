@@ -7,6 +7,9 @@ import NavOne from '@/components/navbar/navone'
 import NavTwo from '@/components/navbar/navtwo'
 import React, { useEffect, useState } from 'react'
 import NewsPage from './news/page'
+import Component from '@/components/global/global'
+import WhyChooseUsEnhancedOne from '@/components/whychooseus/design1'
+import WhyChooseUsEnhancedTwo from '@/components/whychooseus/design2'
 
 interface MediaItem {
   id: string
@@ -35,7 +38,10 @@ const MediaComponent = () => {
       <div className=''>
         <AboutSection />
       </div>
-      <NewsPage/>
+      <WhyChooseUsEnhancedTwo/>
+      <Component/>
+      <WhyChooseUsEnhancedOne/>
+      {/* <NewsPage/> */}
       {/* {media.map((item) => (
         <img key={item.id} src={item.url} alt={item.alt} />
       ))} */}

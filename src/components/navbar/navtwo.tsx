@@ -18,8 +18,8 @@ export default function Navbar() {
       <Link href="#services" className="text-sm font-medium hover:underline">
         Services
       </Link>
-      <Link href="#portfolio" className="text-sm font-medium hover:underline">
-        Portfolio
+      <Link href="/blogs" className="text-sm font-medium hover:underline">
+        Blogs
       </Link>
       <Link href="#contact" className="text-sm font-medium hover:underline">
         Contact
