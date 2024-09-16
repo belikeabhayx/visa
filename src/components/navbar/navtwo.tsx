@@ -189,14 +189,13 @@ const Navbar: React.FC = () => {
     <nav className="bg-[#3423A6] p-3">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <div className="flex items-center justify-center h-20 w-20 bg-white rounded-full">
+          <div className="flex items-center justify-center h-[70px] w-[70px] bg-white rounded-full">
             <Link href="/" className="text-2xl font-bold ">
               <Image
                 src={'/logo/logo.webp'}
                 alt={'aa'}
-                width={70}
-                height={70}
-                
+                width={60}
+                height={20}
               />
             </Link>
           </div>
