@@ -38,7 +38,7 @@ const MediaComponent = () => {
       <div className=''>
         <AboutSection />
       </div>
-      <WhyChooseUsEnhancedTwo/>
+      {/* <WhyChooseUsEnhancedTwo/> */}
       <Component/>
       <WhyChooseUsEnhancedOne/>
       {/* <NewsPage/> */}
