@@ -1,17 +1,64 @@
 'use client'
 
 import { useState } from 'react'
-import { Card, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+
+interface Country {
+  name: string
+  image: string
+  flag: string
+}
+
+interface Category {
+  name: string
+  countries: Country[]
+}
 
 const categories = [
-  { name: 'Education',   emoji: '🎓', countries: ['USA', 'UK', 'Canada', 'Australia'] },
-  { name: 'Immigration', emoji: '✈️', countries: ['Canada', 'New Zealand', 'Germany', 'Sweden'] },
-  { name: 'Business',    emoji: '💼', countries: ['Singapore', 'UAE', 'Netherlands', 'Switzerland'] },
-  { name: 'Tourist',     emoji: '🌴', countries: ['France', 'Japan', 'Italy', 'Thailand'] },
+  {
+    name: 'Education',
+    emoji: '🎓',
+    countries: [
+      { name: 'USA', image: '/flags/image.png', flag: 'https://flagcdn.com/w80/mv.png' },
+      { name: 'UK', image: '/flags/uk.png', flag: 'https://flagcdn.com/w80/mv.png' },
+      { name: 'Canada', image: '/flags/uk.png', flag: 'https://flagcdn.com/w80/mv.png' },
+      { name: 'Australia', image: '/flags/uk.png', flag: 'https://flagcdn.com/w80/mv.png' },
+    ],
+  },
+  {
+    name: 'Immigration',
+    emoji: '✈️',
+    countries: [
+      { name: 'Canada', image: '/images/canada.png' },
+      { name: 'New Zealand', image: '/images/new-zealand.png' },
+      { name: 'Germany', image: '/images/germany.png' },
+      { name: 'Sweden', image: '/images/sweden.png' },
+    ],
+  },
+  {
+    name: 'Business',
+    emoji: '💼',
+    countries: [
+      { name: 'Singapore', image: '/images/singapore.png' },
+      { name: 'UAE', image: '/images/uae.png' },
+      { name: 'Netherlands', image: '/images/netherlands.png' },
+      { name: 'Switzerland', image: '/images/switzerland.png' },
+    ],
+  },
+  {
+    name: 'Tourist',
+    emoji: '🌴',
+    countries: [
+      { name: 'France', image: '/images/france.png' },
+      { name: 'Japan', image: '/images/japan.png' },
+      { name: 'Italy', image: '/images/italy.png' },
+      { name: 'Thailand', image: '/images/thailand.png' },
+    ],
+  },
 ]
 
 export default function Component() {
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
+  const [selectedCategory, setSelectedCategory] = useState<string | null>('Education')
 
   const handleCategoryClick = (categoryName: string) => {
     setSelectedCategory((prevCategory) => (prevCategory === categoryName ? null : categoryName))
@@ -50,14 +97,36 @@ export default function Component() {
             <h2 className="text-2xl font-semibold mb-6 text-center">
               Best Countries for {selectedCategory}
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {categories
                 .find((c) => c.name === selectedCategory)
                 ?.countries.map((country) => (
-                  <Card key={country} className="bg-secondary">
-                    <CardHeader>
-                      <CardTitle className="text-center">{country}</CardTitle>
-                    </CardHeader>
+                  <Card
+                    key={country.name}
+                    className="overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border-4 border-primary/20 rounded-lg"
+                  >
+                    <CardContent className="p-0">
+                      <div className="relative aspect-square">
+                        <img
+                          src={country.image}
+                          alt={country.name}
+                          className="w-full h-full object-cover"
+                        />
+                        <div className="absolute inset-x-0 bottom-0 h-1/5 bg-gradient-to-t from-black/80 to-transparent" />
+                        <div className="absolute bottom-0 left-0 right-0 p-4 flex justify-between items-end">
+                          <h3 className="text-xl font-semibold text-white drop-shadow-md">
+                            {country.name}
+                          </h3>
+                          <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-white shadow-lg">
+                            <img
+                              src={country.flag}
+                              alt={`Flag of ${country.name}`}
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </CardContent>
                   </Card>
                 ))}
             </div>
