@@ -10,6 +10,8 @@ import NewsPage from './news/page'
 import Component from '@/components/global/global'
 import WhyChooseUsEnhancedOne from '@/components/whychooseus/design1'
 import WhyChooseUsEnhancedTwo from '@/components/whychooseus/design2'
+import Ticker from '@/components/ticker/ticker'
+import {MediaMention} from '@/components/mediamention/mediamention'
 
 interface MediaItem {
   id: string
@@ -41,6 +43,8 @@ const MediaComponent = () => {
       {/* <WhyChooseUsEnhancedTwo/> */}
       <Component/>
       <WhyChooseUsEnhancedOne/>
+      <Ticker/>
+      <MediaMention/>
       {/* <NewsPage/> */}
       {/* {media.map((item) => (
         <img key={item.id} src={item.url} alt={item.alt} />

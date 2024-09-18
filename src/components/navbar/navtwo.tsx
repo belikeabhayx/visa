@@ -104,7 +104,7 @@ const DesktopNavItem: React.FC<{ item: NavItem; level?: number }> = ({ item, lev
   }
 
   const handleMouseLeave = () => {
-    timeoutRef.current = setTimeout(() => setIsOpen(false), 300)
+    timeoutRef.current = setTimeout(() => setIsOpen(false), 100)
   }
 
   useEffect(() => {
