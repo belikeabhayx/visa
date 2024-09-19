@@ -61,13 +61,13 @@ export default function HeroSwiper() {
   const fetchImages = useCallback(
     async (startIndex: number, count: number) => {
       try {
-        const response = await axios.get(`/api/media?index=${startIndex}&limit=${count}`)
+        const response = await axios.get(`/api/homepage-banner?index=${startIndex}&limit=${count}`)
         const { docs, totalDocs } = response.data
 
         if (Array.isArray(docs)) {
           const newItems = docs.map((item: any, index: number) => ({
-            url: item.url,
-            alt: item.alt || `Image ${startIndex + index + 1}`,
+            url: item.image.url,
+            alt: item.image.alt || `Image ${startIndex + index + 1}`,
           }))
 
           setMediaItems((prevItems) => {

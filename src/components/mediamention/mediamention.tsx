@@ -11,11 +11,11 @@ import {
 import Image from 'next/image'
 
 type MediaLogo = {
-  src: {
-    url: string // URL of the image
+  logo: {
+    url: string
+    alt: string
   }
-  alt: string
-  href: string
+  website?: string
 }
 
 // Define the API endpoint
@@ -66,15 +66,15 @@ export function MediaMention() {
               <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/3 lg:basis-1/4">
                 <div className="p-4">
                   <a
-                    href={logo.href}
+                    href={logo.website || '#'}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-6"
                   >
                     <div className="relative w-full h-20">
                       <Image
-                        src={logo.src.url} // Use the image URL from the API response
-                        alt={logo.alt}
+                        src={logo.logo.url}
+                        alt={logo.logo.alt}
                         layout="fill"
                         objectFit="contain"
                       />

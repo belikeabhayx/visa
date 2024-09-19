@@ -1,42 +1,47 @@
+// src/collection/mediamention/index.ts
 import { CollectionConfig } from 'payload'
 
 const MediaLogos: CollectionConfig = {
-  slug: 'media-logos', // The slug will be used for the API endpoint
+  slug: 'media-logos',
   labels: {
     singular: 'Media Logo',
     plural: 'Media Logos',
   },
   admin: {
-    useAsTitle: 'alt',
-    defaultColumns: ['alt', 'src', 'href', 'updatedAt'],
+    useAsTitle: 'companyName',
+    defaultColumns: ['companyName', 'logo', 'updatedAt'],
   },
   access: {
-    read: () => true, // Allow public access to read
-    create: ({ req: { user } }) => !!user, // Only logged-in users can create
-    update: ({ req: { user } }) => !!user, // Only logged-in users can update
-    delete: ({ req: { user } }) => !!user, // Only logged-in users can delete
+    read: () => true,
+    create: ({ req: { user } }) => !!user,
+    update: ({ req: { user } }) => !!user,
+    delete: ({ req: { user } }) => !!user,
   },
   fields: [
     {
-      name: 'src',
-      label: 'Image Source',
-      type: 'upload', // Use 'upload' to store image files
-      relationTo: 'media', // Assuming you have a media collection
-      required: true,
-    },
-    {
-      name: 'alt',
-      label: 'Alt Text',
+      name: 'companyName',
+      label: 'Company Name',
       type: 'text',
       required: true,
     },
     {
-      name: 'href',
-      label: 'Link',
-      type: 'text',
+      name: 'logo',
+      label: 'Company Logo',
+      type: 'upload',
+      relationTo: 'media',
       required: true,
+    },
+    {
+      name: 'website',
+      label: 'Company Website',
+      type: 'text',
+    },
+    {
+      name: 'order',
+      label: 'Display Order',
+      type: 'number',
     },
   ],
 }
 
-export default MediaLogos;
+export default MediaLogos

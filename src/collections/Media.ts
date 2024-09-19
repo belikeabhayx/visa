@@ -1,4 +1,6 @@
-import type { CollectionConfig } from 'payload'
+// src/collection/media.ts
+import path from 'path'
+import { CollectionConfig } from 'payload'
 
 export const Media: CollectionConfig = {
   slug: 'media',
@@ -11,11 +13,12 @@ export const Media: CollectionConfig = {
       type: 'text',
       required: true,
     },
-     {
-      name: 'link',
-      type: 'text',
-      label: 'Link URL',
+    {
+      name: 'caption',
+      type: 'richText',
     },
   ],
-  upload: true,
+  upload: {
+    staticDir: path.resolve(__dirname, '../../../media'),
+  },
 }
