@@ -16,6 +16,7 @@ export interface Config {
     circle: Circle;
     news: News;
     'blog-posts': BlogPost;
+    'media-logos': MediaLogo;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
@@ -163,6 +164,18 @@ export interface BlogPost {
   slug?: string | null;
   publishedDate?: string | null;
   author?: (number | null) | User;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "media-logos".
+ */
+export interface MediaLogo {
+  id: number;
+  src: number | Media;
+  alt: string;
+  href: string;
   updatedAt: string;
   createdAt: string;
 }

@@ -12,6 +12,7 @@ import { Circle } from './collections/Circle'
 import News from './collections/News'
 // import { Posts } from './collections/Posts'
 import BlogPosts from './collections/Blogs'
+import MediaLogos from './collections/mediamention'
 
 
 const filename = fileURLToPath(import.meta.url)
@@ -24,7 +25,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Circle, News, BlogPosts],
+  collections: [Users, Media, Circle, News, BlogPosts, MediaLogos],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
@@ -37,4 +38,4 @@ export default buildConfig({
   }),
   sharp,
   plugins: [],
-});
+})

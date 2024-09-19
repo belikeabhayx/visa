@@ -21,8 +21,8 @@ const categories = [
     countries: [
       { name: 'USA', image: '/flags/image.png', flag: 'https://flagcdn.com/w80/mv.png' },
       { name: 'UK', image: '/flags/uk.png', flag: 'https://flagcdn.com/w80/mv.png' },
-      { name: 'Canada', image: '/flags/uk.png', flag: 'https://flagcdn.com/w80/mv.png' },
-      { name: 'Australia', image: '/flags/uk.png', flag: 'https://flagcdn.com/w80/mv.png' },
+      { name: 'Canada', image: '/flags/can.png', flag: 'https://flagcdn.com/w80/mv.png' },
+      { name: 'Australia', image: '/flags/aus.png', flag: 'https://flagcdn.com/w160/au.png' },
     ],
   },
   {
