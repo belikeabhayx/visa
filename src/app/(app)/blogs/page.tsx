@@ -3,6 +3,10 @@ import Link from 'next/link'
 import Image from 'next/image'
 import BlogBanner from './components/banner'
 import { CalendarIcon, UserIcon, ArrowRightIcon } from 'lucide-react'
+import Component from './components/exp1'
+import Component1 from './components/exp2'
+import Component2 from './components/exp3'
+import Component3 from './components/exp4'
 
 interface BlogPost {
   id: number
@@ -53,12 +57,12 @@ export default async function BlogsPage() {
         <h1 className="text-5xl font-extrabold mb-12 text-center text-gray-800 leading-tight">
           Explore Our <span className="text-blue-600">Latest</span> Insights
         </h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {posts.map((post) => (
             <Link href={`/blogs/${post.slug || post.id}`} key={post.id} className="group">
-              <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 h-full flex flex-col">
+              <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 h-full flex flex-col max-w-sm">
                 {post.featuredImage && (
-                  <div className="relative h-64 w-full">
+                  <div className="relative h-60 w-full">
                     <Image
                       src={post.featuredImage.url}
                       alt={post.title}
