@@ -78,15 +78,9 @@ const navItems: NavItem[] = [
     title: 'Resource',
     href: '#resource',
     subItems: [
-      { title: 'FAQs', href: '#faqs' },
-      {
-        title: 'Immigration News',
-        href: '#immigration-news',
-        subItems: [
-          { title: 'Policy Updates', href: '#policy-updates' },
-          { title: 'Success Stories', href: '#success-stories' },
-        ],
-      },
+      { title: 'News', href: '/news' },
+      { title: 'Blogs', href: '/blogs' },
+      { title: 'Testimonials', href: '/test'},
     ],
   },
   { title: 'About Us', href: '#about-us' },

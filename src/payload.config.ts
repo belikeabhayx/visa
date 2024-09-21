@@ -14,6 +14,8 @@ import News from './collections/News'
 import BlogPosts from './collections/Blogs'
 import MediaLogos from './collections/mediamention'
 import HomepageBanner from './collections/homepagebanner'
+import { Posts } from './collections/Posts'
+import Categories from './collections/Categories'
 
 
 const filename = fileURLToPath(import.meta.url)
@@ -26,7 +28,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Circle, News, BlogPosts, MediaLogos, HomepageBanner],
+  collections: [Users, Media, Circle, News, BlogPosts, MediaLogos, HomepageBanner, Posts, Categories],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

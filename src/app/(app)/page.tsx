@@ -34,8 +34,6 @@ const MediaComponent = () => {
 
   return (
     <div>
-      <NavOne />
-      <NavTwo />
       <HeroSwiper />
       <div className=''>
         <AboutSection />

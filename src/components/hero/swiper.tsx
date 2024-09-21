@@ -7,6 +7,7 @@ import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 import { Pagination, Navigation } from 'swiper/modules'
 import Card from '../cards/card'
+import { Skeleton } from '../ui/skeleton'
 
 interface MediaItem {
   url: string
@@ -117,10 +118,16 @@ export default function HeroSwiper() {
     }
   }
 
-  if (loading) return <div>Loading...</div>
+  if (loading) {
+    return (
+      <div className="relative swiper-container">
+        <Skeleton className="w-full h-[70vh] rounded-lg" />
+      </div>
+    )
+  }
   if (error) return <div>{error}</div>
 
-  return (
+   return (
     <div className="relative swiper-container">
       <Swiper
         slidesPerView={1}
@@ -132,24 +139,17 @@ export default function HeroSwiper() {
         className="mySwiper"
         onSlideChange={handleSlideChange}
       >
-        {Array.from({ length: totalImages }).map((_, index) => (
+        {mediaItems.map((item, index) => (
           <SwiperSlide key={index} style={{ height: '70vh', width: '70vw' }}>
-            {mediaItems[index] ? (
-              <img
-                src={mediaItems[index].url}
-                alt={mediaItems[index].alt}
-                className="object-cover w-full h-full"
-              />
-            ) : (
-              <div className="w-full h-full bg-gray-200 flex items-center justify-center">
-                Loading...
-              </div>
-            )}
+            <img
+              src={item.url}
+              alt={item.alt}
+              className="object-cover w-full h-full"
+            />
           </SwiperSlide>
         ))}
       </Swiper>
 
-      {/* Positioning Card slightly over the Swiper */}
       <div className="absolute bottom-[-330px] left-1/2 transform -translate-x-1/2 z-10 flex gap-x-8">
         {countries.map((countryData) => (
           <Card
