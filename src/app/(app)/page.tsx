@@ -12,6 +12,9 @@ import WhyChooseUsEnhancedOne from '@/components/whychooseus/design1'
 import WhyChooseUsEnhancedTwo from '@/components/whychooseus/design2'
 import Ticker from '@/components/ticker/ticker'
 import {MediaMention} from '@/components/mediamention/mediamention'
+import TestimonialsPage from '@/components/ClientTestimonial/design1'
+import TestimonialsPage1 from '@/components/ClientTestimonial/design2'
+import TestimonialsPage2 from '@/components/ClientTestimonial/design3'
 
 interface MediaItem {
   id: string
@@ -33,22 +36,27 @@ const MediaComponent = () => {
   }, [])
 
   return (
-    <div>
-      <HeroSwiper />
-      <div className=''>
-        <AboutSection />
-      </div>
-      {/* <WhyChooseUsEnhancedTwo/> */}
-      <Component/>
-      <WhyChooseUsEnhancedOne/>
-      <Ticker/>
-      <MediaMention/>
-      {/* <NewsPage/> */}
-      {/* {media.map((item) => (
+    <>
+      <div>
+        <HeroSwiper />
+        <div className="">
+          <AboutSection />
+        </div>
+        {/* <WhyChooseUsEnhancedTwo/> */}
+        <Component />
+        <WhyChooseUsEnhancedOne />
+        <Ticker />
+        <MediaMention />
+        {/* <TestimonialsPage />
+        <TestimonialsPage1 /> */}
+        <TestimonialsPage2 />
+        {/* <NewsPage/> */}
+        {/* {media.map((item) => (
         <img key={item.id} src={item.url} alt={item.alt} />
       ))} */}
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </>
   )
 }
 
