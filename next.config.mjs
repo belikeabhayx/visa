@@ -5,6 +5,9 @@ const nextConfig = {
   devIndicators: {
     appIsrStatus: false,
   },
+  images: {
+    domains: ['kcxqbkwxvnlhzxvwlnpv.supabase.co'],
+  },
 }
 
 export default withPayload(nextConfig)
