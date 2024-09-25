@@ -3,7 +3,7 @@ import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/f
 
 const NavOne = () => {
   return (
-    <div className="bg-white text-black h-16 flex items-center justify-between px-4 py-2">
+    <div className="fixed top-0 left-0 right-0 z-50 bg-white text-black h-16 flex items-center justify-between px-4 py-2 shadow-md">
       <div className="container mx-auto">
         <div className="flex justify-between items-center">
           <div className="text-left pl-8">

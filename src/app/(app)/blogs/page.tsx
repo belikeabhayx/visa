@@ -7,6 +7,8 @@ import Component from './components/exp1'
 import Component1 from './components/exp2'
 import Component2 from './components/exp3'
 import Component3 from './components/exp4'
+import EnhancedNewsAndBlogs from '@/components/NewsBlog/design1'
+import MagazineStyleNews from './components/pagetemplate'
 
 interface BlogPost {
   id: number
@@ -52,7 +54,8 @@ export default async function BlogsPage() {
 
   return (
     <div className="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
-      <BlogBanner />
+      {/* <BlogBanner /> */}
+      <MagazineStyleNews />
       <div className="container mx-auto px-4 py-16">
         <h1 className="text-5xl font-extrabold mb-12 text-center text-gray-800 leading-tight">
           Explore Our <span className="text-blue-600">Latest</span> Insights

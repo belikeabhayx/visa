@@ -1,25 +1,13 @@
 'use client'
 
 import React, { useEffect, useRef, useState } from 'react'
+import { motion, useAnimation } from 'framer-motion'
 
-interface StatCounterProps {
-  end: number
-  label: string
-  duration?: number
-  decimals?: number
-  suffix?: string
-}
-
-const StatCounter: React.FC<StatCounterProps> = ({
-  end,
-  label,
-  duration = 2000,
-  decimals = 0,
-  suffix = '',
-}) => {
-  const [count, setCount] = useState<number>(0)
-  const [hasAnimated, setHasAnimated] = useState<boolean>(false)
+const StatCounter = ({ end, label, duration = 2000, decimals = 0, suffix = '' }) => {
+  const [count, setCount] = useState(0)
+  const [hasAnimated, setHasAnimated] = useState(false)
   const ref = useRef<HTMLDivElement | null>(null)
+  const controls = useAnimation()
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -27,6 +15,7 @@ const StatCounter: React.FC<StatCounterProps> = ({
         const entry = entries[0]
         if (entry.isIntersecting && !hasAnimated) {
           setHasAnimated(true)
+          controls.start('visible')
         }
       },
       { threshold: 0.1 },
@@ -41,15 +30,15 @@ const StatCounter: React.FC<StatCounterProps> = ({
         observer.unobserve(ref.current)
       }
     }
-  }, [hasAnimated])
+  }, [hasAnimated, controls])
 
   useEffect(() => {
     if (!hasAnimated) return
 
-    let startTime: number | null = null
-    let animationFrame: number
+    let startTime
+    let animationFrame
 
-    const updateCount = (timestamp: number) => {
+    const updateCount = (timestamp) => {
       if (!startTime) startTime = timestamp
       const progress = timestamp - startTime
 
@@ -67,37 +56,50 @@ const StatCounter: React.FC<StatCounterProps> = ({
   }, [end, duration, hasAnimated])
 
   return (
-    <div
+    <motion.div
       className="relative text-center p-6 bg-blue-700 bg-opacity-30 rounded-xl backdrop-blur-sm"
       ref={ref}
+      initial="hidden"
+      animate={controls}
+      variants={{
+        hidden: { opacity: 0, y: 20 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
+      }}
     >
-      <div
-        className="absolute inset-0 bg-blue-400 rounded-xl opacity-20 animate-pulse"
-        style={{ animation: 'pulse 3s infinite' }}
-      />
-      <p
-        className="text-5xl md:text-6xl font-bold mb-2 text-blue-100 transition-all duration-500 ease-in-out"
-        style={{
-          animation: hasAnimated ? 'scaleIn 0.5s ease-out 0.2s both' : 'none',
+      <motion.div
+        className="absolute inset-0 bg-blue-400 rounded-xl opacity-20"
+        animate={{
+          scale: [1, 1.05, 1],
+          opacity: [0.2, 0.3, 0.2],
         }}
+        transition={{
+          duration: 3,
+          repeat: Infinity,
+          ease: 'easeInOut',
+        }}
+      />
+      <motion.p
+        className="text-5xl md:text-6xl font-bold mb-2 text-blue-100"
+        animate={{ scale: [1, 1.1, 1] }}
+        transition={{ duration: 0.5, delay: 0.2 }}
       >
         {count.toFixed(decimals)}
         {suffix}
-      </p>
+      </motion.p>
       <p className="text-blue-200 text-xl font-medium">{label}</p>
-    </div>
+    </motion.div>
   )
 }
 
-const Ticker: React.FC = () => {
+const Ticker = () => {
   return (
-    <div className="flex items-center justify-center bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900 p-4">
-      <div className="w-full max-w-7xl mx-auto">
-        <div
+    <div className="flex items-center justify-center p-4">
+      <div className="w-full max-w-7xl mx-auto bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900 rounded-3xl">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
           className="rounded-3xl p-8 md:p-16 shadow-2xl bg-blue-800 bg-opacity-20 backdrop-blur-lg border border-blue-400 border-opacity-20"
-          style={{
-            animation: 'fadeInDown 1s ease-out',
-          }}
         >
           <h2 className="text-6xl md:text-7xl font-bold mb-16 text-center text-blue-100 tracking-tight">
             Our Global{' '}
@@ -111,7 +113,7 @@ const Ticker: React.FC = () => {
             <StatCounter end={99.99} label="Uptime Percentage" decimals={2} suffix="%" />
             <StatCounter end={24} label="Support Availability" suffix="/7" />
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   )

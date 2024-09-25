@@ -746,7 +746,7 @@ const Design3 = () => {
         </div>
       </main>
 
-      <footer className="bg-gray-100 py-8 mt-12">
+      {/* <footer className="bg-gray-100 py-8 mt-12">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-4 gap-8">
             <div>
@@ -790,7 +790,7 @@ const Design3 = () => {
             © 2024 Australia Immigration Services. All rights reserved.
           </div>
         </div>
-      </footer>
+      </footer> */}
     </div>
   )
 }

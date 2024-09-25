@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import '@/app/(app)/globals.css'
 import NavOne from '@/components/navbar/navone'
 import NavTwo from '@/components/navbar/navtwo'
+import { Footer } from '@/components/footer/footer'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -24,6 +25,7 @@ export default function RootLayout({
           <NavOne />
           <NavTwo />
           {children}
+          <Footer/>
         </div>
       </body>
     </html>

@@ -10,6 +10,7 @@ import Ticker from '@/components/ticker/ticker'
 import {MediaMention} from '@/components/mediamention/mediamention'
 import TestimonialsPage2 from '@/components/ClientTestimonial/design3'
 import EnhancedNewsAndBlogs from '@/components/NewsBlog/design1'
+import Ticker1 from '@/components/ticker/ticker1'
 
 interface MediaItem {
   id: string
@@ -40,7 +41,8 @@ const MediaComponent = () => {
         {/* <WhyChooseUsEnhancedTwo/> */}
         <Component />
         <WhyChooseUsEnhancedOne />
-        <Ticker />
+        {/* <Ticker /> */}
+        <Ticker1/>
         <MediaMention />
         {/* <TestimonialsPage />
         <TestimonialsPage1 /> */}

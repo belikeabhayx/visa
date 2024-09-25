@@ -76,8 +76,8 @@ const EnhancedNewsAndBlogs = () => {
       : newsItems.filter((item) => item.category === activeCategory)
 
   return (
-    <section className="w-full py-12 bg-gradient-to-b from-gray-50 to-white mx-auto ">
-      <div className="container px-4 md:px-6">
+    <section className="w-full py-12 bg-gradient-to-b from-gray-50 to-white">
+      <div className="container mx-auto px-4 md:px-6">
         <h2 className="text-4xl font-bold tracking-tighter mb-8 text-center text-primary">
           Latest News & Insights
         </h2>
